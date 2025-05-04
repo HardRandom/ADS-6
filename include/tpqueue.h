@@ -4,9 +4,9 @@
 #include <list>
 template<typename T>
 class TPQueue {
-private:
+ private:
     std::list<T> data;
-public:
+ public:
     void push(const T& elem) {
         auto it = data.begin();
         while (it != data.end() && it->prior >= elem.prior) {
