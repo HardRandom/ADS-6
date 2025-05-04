@@ -4,7 +4,34 @@
 
 template<typename T>
 class TPQueue {
-  // реализация шаблона очереди с приоритетом на связанном списке
+  private:
+    std::list<T> data;
+
+public:
+    void push(const T& elem) {
+        auto it = data.begin();
+        
+        // Ищем первую позицию с меньшим приоритетом
+        while (it != data.end() && it->prior >= elem.prior) {
+            ++it;
+        }
+        
+        data.insert(it, elem);
+    }
+
+    T pop() {
+        if (data.empty()) {
+            throw std::runtime_error("Queue is empty");
+        }
+        
+        T elem = data.front();
+        data.pop_front();
+        return elem;
+    }
+
+    bool isEmpty() const { return data.empty(); }
+    const T& front() const { return data.front(); }
+    size_t size() const { return data.size(); }
 };
 
 struct SYM {
