@@ -21,10 +21,6 @@ public:
     }
 
     T pop() {
-        if (data.empty()) {
-            throw std::runtime_error("Queue is empty");
-        }
-        
         T elem = data.front();
         data.pop_front();
         return elem;
